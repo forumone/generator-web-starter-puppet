@@ -1,0 +1,18 @@
+---
+{{#database}}
+forumone::databases: 
+  {{db_name}}: 
+    username: {{db_user}}
+{{/database}}
+
+forumone::webserver::vhosts:  
+  vagrant: 
+    path: "{{vhost}}"
+
+{{#solr}}
+forumone::solr::collections:  
+  drupal: 
+    order: 1
+{{/solr}}
+
+forumone::php::prefix: "{{php_version}}"
