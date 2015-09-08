@@ -84,6 +84,10 @@ module.exports = generators.Base.extend({
       {
         name : '5.5',
         value : 'php55u'
+      },
+      {
+        name : '5.6',
+        value : 'php56u'
       }]
     },
     {
@@ -105,10 +109,20 @@ module.exports = generators.Base.extend({
     init : function() {
       var done = this.async();
       
-      var config = this.config.getAll();
-      _.extend(config, this.options.parent.answers);
+      // Get current system config for this sub-generator
+      var config = this.options.parent.answers['web-starter-puppet'];
       
-      this.template('puppet/manifests/init.pp', 'puppet/manifests/init.pp', config);
+      // Set default platform
+      config.platform = 'drupal';
+      
+      _.extend(config, this.options.parent.answers);
+
+      
+      this.fs.copyTpl(
+        this.templatePath('puppet/manifests/init.pp'),
+        this.destinationPath('puppet/manifests/init.pp'),
+        config
+      );
       
       done();
     },
@@ -116,10 +130,15 @@ module.exports = generators.Base.extend({
     site : function() {
       var done = this.async();
       
-      var config = this.config.getAll();
+      // Get current system config for this sub-generator
+      var config = this.options.parent.answers['web-starter-puppet'];
       _.extend(config, this.options.parent.answers);
       
-      this.template('puppet/manifests/hieradata/sites/localhost.localdomain.yaml', 'puppet/manifests/hieradata/sites/localhost.localdomain.yaml', config);
+      this.fs.copyTpl(
+        this.templatePath('puppet/manifests/hieradata/sites/localhost.localdomain.yaml'),
+        this.destinationPath('puppet/manifests/hieradata/sites/localhost.localdomain.yaml'),
+        config
+      );
       
       done();
     }

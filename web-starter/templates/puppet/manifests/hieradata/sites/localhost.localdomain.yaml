@@ -1,18 +1,18 @@
 ---
-{{#database}}
+<%if (database) { %>
 forumone::databases: 
-  {{db_name}}: 
-    username: {{db_user}}
-{{/database}}
+  <%= db_name %>: 
+    username: <%= db_user %>
+<% } %>
 
 forumone::webserver::vhosts:  
   vagrant: 
-    path: "{{vhost}}"
+    path: "<%= vhost %>"
 
-{{#solr}}
+<%if (solr) { %>
 forumone::solr::collections:  
   drupal: 
     order: 1
-{{/solr}}
+<% } %>
 
-forumone::php::prefix: "{{php_version}}"
+forumone::php::prefix: "<%= db_name %>"
