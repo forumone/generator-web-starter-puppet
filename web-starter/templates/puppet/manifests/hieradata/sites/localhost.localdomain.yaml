@@ -15,4 +15,4 @@ forumone::solr::collections:
     order: 1
 <% } %>
 
-forumone::php::prefix: "<%= db_name %>"
+forumone::php::prefix: "<%= php_version %>"
