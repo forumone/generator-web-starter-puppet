@@ -3,7 +3,6 @@ var generators = require('yeoman-generator'),
   _ = require('lodash');
 
 module.exports = generators.Base.extend({
-  engine : require('yeoman-hoganjs-engine'),
   prompting : function() {
     var done = this.async();
     var config = _.extend({
