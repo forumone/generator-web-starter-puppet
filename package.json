@@ -44,5 +44,9 @@
   ],
   "files": [
     "web-starter"
-  ]
+  ],
+  "webStarter": {
+  	"category": "Utilities",
+  	"name": "Puppet"
+  }
 }
