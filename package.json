@@ -1,6 +1,6 @@
 {
   "name": "generator-web-starter-puppet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Puppet yeoman sub-generator for web-starter",
   "keywords": [
     "yeoman-generator"
@@ -17,7 +17,8 @@
     "url": "git://github.com/forumone/generator-web-starter-puppet.git"
   },
   "dependencies": {
-    "lodash": "^3.10.0",
+    "bluebird": "^3.3.5",
+    "lodash": "^4.6",
     "update-notifier": "^0.2.2",
     "yeoman-generator": "~0.20",
     "yosay": "^1.0.0"
@@ -35,7 +36,7 @@
     "web-starter"
   ],
   "webStarter": {
-  	"category": "Utilities",
-  	"name": "Puppet"
+    "category": "Utilities",
+    "name": "Puppet"
   }
 }
