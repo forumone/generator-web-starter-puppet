@@ -77,7 +77,7 @@ module.exports = generators.Base.extend({
         },
         {
           name : '5.3',
-          value : 'php53'
+          value : 'php'
         },
         {
           name : '5.4',
