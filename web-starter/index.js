@@ -124,6 +124,36 @@ module.exports = generators.Base.extend({
       _.extend(config, this.options.parent.answers);
 
       this.fs.copyTpl(
+        this.templatePath('puppet/manifests/hieradata/hosts/acquia.yaml'),
+        this.destinationPath('puppet/manifests/hieradata/hosts/acquia.yaml'),
+        config
+      );
+      this.fs.copyTpl(
+        this.templatePath('puppet/manifests/hieradata/hosts/f1dev.yaml'),
+        this.destinationPath('puppet/manifests/hieradata/hosts/f1dev.yaml'),
+        config
+      );
+      this.fs.copyTpl(
+        this.templatePath('puppet/manifests/hieradata/hosts/pantheon.yaml'),
+        this.destinationPath('puppet/manifests/hieradata/hosts/pantheon.yaml'),
+        config
+      );
+      this.fs.copyTpl(
+        this.templatePath('puppet/manifests/hieradata/platforms/' + config.platform + '.yaml'),
+        this.destinationPath('puppet/manifests/hieradata/platforms/' + config.platform + '.yaml'),
+        config
+      );
+      this.fs.copyTpl(
+        this.templatePath('puppet/manifests/hieradata/common.yaml'),
+        this.destinationPath('puppet/manifests/hieradata/common.yaml'),
+        config
+      );
+      this.fs.copyTpl(
+        this.templatePath('puppet/manifests/hiera.yaml'),
+        this.destinationPath('puppet/manifests/hiera.yaml'),
+        config
+      );
+      this.fs.copyTpl(
         this.templatePath('puppet/manifests/init.pp'),
         this.destinationPath('puppet/manifests/init.pp'),
         config
