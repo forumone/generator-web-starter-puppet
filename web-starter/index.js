@@ -1,5 +1,5 @@
 'use strict';
-var generators = require('yeoman-generator'), 
+var generators = require('yeoman-generator'),
   _ = require('lodash')
   Promise = require('bluebird');
 
@@ -102,7 +102,7 @@ module.exports = generators.Base.extend({
       });
     }).then(function(answers) {
       that.config.set(answers);
-        
+
       answers.config = {};
       // Expose the answers on the parent generator
       _.extend(that.options.parent.answers, { 'web-starter-puppet' : answers });
@@ -114,38 +114,37 @@ module.exports = generators.Base.extend({
     // Write Puppet manifest file
     init : function() {
       var done = this.async();
-      
+
       // Get current system config for this sub-generator
       var config = this.options.parent.answers['web-starter-puppet'];
-      
+
       // Set default platform
       config.platform = 'drupal';
-      
+
       _.extend(config, this.options.parent.answers);
 
-      
       this.fs.copyTpl(
         this.templatePath('puppet/manifests/init.pp'),
         this.destinationPath('puppet/manifests/init.pp'),
         config
       );
-      
+
       done();
     },
     // Write Hiera site file
     site : function() {
       var done = this.async();
-      
+
       // Get current system config for this sub-generator
       var config = this.options.parent.answers['web-starter-puppet'];
       _.extend(config, this.options.parent.answers);
-      
+
       this.fs.copyTpl(
         this.templatePath('puppet/manifests/hieradata/sites/localhost.localdomain.yaml'),
         this.destinationPath('puppet/manifests/hieradata/sites/localhost.localdomain.yaml'),
         config
       );
-      
+
       done();
     }
   }
