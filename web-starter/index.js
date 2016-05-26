@@ -1,9 +1,15 @@
 'use strict';
-var generators = require('yeoman-generator'), 
-  _ = require('lodash')
+var generators = require('yeoman-generator'),
+  _ = require('lodash'),
+  pkg = require('../package.json'),
   Promise = require('bluebird');
 
 module.exports = generators.Base.extend({
+  initializing : {
+    async : function() {
+      this.options.addDevDependency(pkg.name, pkg.version);
+    }
+  },
   prompting : function() {
     var done = this.async();
     var that = this;
