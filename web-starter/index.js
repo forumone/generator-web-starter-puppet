@@ -176,8 +176,8 @@ module.exports = generators.Base.extend({
       _.extend(config, this.options.parent.answers);
 
       this.fs.copyTpl(
-        this.templatePath('puppet/manifests/hieradata/sites/localhost.localdomain.yaml'),
-        this.destinationPath('puppet/manifests/hieradata/sites/localhost.localdomain.yaml'),
+        this.templatePath('puppet/manifests/hieradata/sites/localhost.yaml'),
+        this.destinationPath('puppet/manifests/hieradata/sites/localhost.yaml'),
         config
       );
 
