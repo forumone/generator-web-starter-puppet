@@ -11,7 +11,6 @@ module.exports = generators.Base.extend({
     }
   },
   prompting : function() {
-    var done = this.async();
     var that = this;
     var config = _.extend({
       host : 'f1dev',
@@ -112,8 +111,6 @@ module.exports = generators.Base.extend({
       answers.config = {};
       // Expose the answers on the parent generator
       _.extend(that.options.parent.answers, { 'web-starter-puppet' : answers });
-    }).finally(function() {
-      done();
     });
   },
   writing : {
