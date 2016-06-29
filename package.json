@@ -18,10 +18,11 @@
   },
   "dependencies": {
     "bluebird": "^3.3.5",
-    "lodash": "^4.6",
-    "update-notifier": "^0.2.2",
+    "lodash": "^4.11",
+    "update-notifier": "^0.7.0",
     "yeoman-generator": "~0.23",
-    "yosay": "^1.0.0"
+    "yeoman-generator-bluebird": "^0.1.0",
+    "yosay": "~1.1.1"
   },
   "engines": {
     "node": ">=0.8.0",
