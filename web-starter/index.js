@@ -18,7 +18,7 @@ module.exports = generators.Base.extend({
       database : true,
       db_name : 'web',
       db_user : 'web',
-      php_version : 'php55u',
+      php_version : 'php56u',
       solr : true
     }, this.config.getAll());
 
