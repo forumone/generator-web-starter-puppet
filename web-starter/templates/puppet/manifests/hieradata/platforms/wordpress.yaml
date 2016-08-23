@@ -8,7 +8,11 @@ classes:
 forumone::php::modules:
   - xml
   - mbstring
+<%if ('php' !== php_version) { %>    
   - mysqlnd
+<% } else { %>
+  - mysql 
+<% } %>
   - pecl-xdebug
 
 forumone::webserver::platform: 'wordpress'  
@@ -27,6 +31,7 @@ forumone::php::settings:
   xdebug.remote_connect_back: 1
   xdebug.remote_handler: "dbgp"
   opcache.memory_consumption: "128M"
+  xcache.size: "128M"
   
 percona::conf:
   max_allowed_packets:

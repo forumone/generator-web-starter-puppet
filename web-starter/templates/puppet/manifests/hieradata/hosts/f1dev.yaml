@@ -12,4 +12,8 @@ forumone::php::prefix: "php55u"
 forumone::php::modules:
   - pecl-memcached
   - gd
+<%if ('php' !== php_version) { %>  
   - opcache
+<% } else { %>
+  - xcache 
+<% } %>

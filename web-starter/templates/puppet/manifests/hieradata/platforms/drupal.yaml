@@ -10,7 +10,11 @@ forumone::php::modules:
   - xml
   - pdo
   - mbstring
+<%if ('php' !== php_version) { %>    
   - mysqlnd
+<% } else { %>
+  - mysql 
+<% } %>
   - pecl-xdebug
   - gd
   - process
@@ -33,6 +37,7 @@ forumone::php::settings:
   xdebug.remote_connect_back: 1
   xdebug.remote_handler: "dbgp"
   opcache.memory_consumption: "128M"
+  xcache.size: "128M"
   date.timezone: "UTC"
 
 percona::conf:
