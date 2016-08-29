@@ -16,3 +16,5 @@ forumone::solr::collections:
 <% } %>
 
 forumone::php::prefix: "<%= php_version %>"
+
+forumone::ruby::version: "<%= ruby_version %>"

@@ -157,18 +157,57 @@ module.exports = generators.Base.extend({
         this.destinationPath('puppet/manifests/init.pp'),
         config
       );
+      
+      this.fs.copyTpl(
+        this.templatePath('puppet/manifests/hieradata/sites/localhost.yaml'),
+        this.destinationPath('puppet/manifests/hieradata/sites/localhost.yaml'),
+        config
+      );
     },
-    // Write Hiera site file
+    // Write Vagrantfile
     site : function() {
       // Get current system config for this sub-generator
       var config = this.options.parent.answers['web-starter-puppet'];
       _.extend(config, this.options.parent.answers);
 
       this.fs.copyTpl(
-        this.templatePath('puppet/manifests/hieradata/sites/localhost.yaml'),
-        this.destinationPath('puppet/manifests/hieradata/sites/localhost.yaml'),
+        this.templatePath('Vagrantfile'),
+        this.destinationPath('Vagrantfile'),
         config
       );
+    },
+    puppetfile : function() {
+      // Get current system config for this sub-generator
+      var config = this.options.parent.answers['web-starter-puppet'];
+      _.extend(config, this.options.parent.answers);
+
+      this.fs.copyTpl(
+        this.templatePath('puppet/Puppetfile'),
+        this.destinationPath('puppet/Puppetfile'),
+        config
+      );
+    },
+    scripts : function() {
+      // Get current system config for this sub-generator
+      var config = this.options.parent.answers['web-starter-puppet'];
+      _.extend(config, this.options.parent.answers);
+
+      var that = this;
+      
+      _.each(['Gemfile', 
+                 'librarian-puppet-install.sh', 
+                 'os-detect.sh', 
+                 'post-provision.sh', 
+                 'post-provision.unprivileged.sh',
+                 'pre-provision.sh'], function(script) {
+        
+        that.fs.copyTpl(
+          that.templatePath('puppet/shell/' + script),
+          that.destinationPath('puppet/shell/' + script),
+          config
+        );
+        
+      });
     }
   }
 });
